@@ -1,5 +1,5 @@
 import { PhotosGrid } from "@molecules/PhotosGrid";
-import { NoFoundText } from "@atoms/NoFoundText";
+import { NoFoundDataText } from "@atoms/NoFoundDataText";
 
 export const RenderThroughData = ({ photos, error }) => {
   const hasPhotos = photos.length > 0;
@@ -7,6 +7,6 @@ export const RenderThroughData = ({ photos, error }) => {
   return hasPhotos ? (
     <PhotosGrid photos={photos} />
   ) : (
-    <NoFoundText error={error} />
+    <NoFoundDataText error={error} />
   );
 };

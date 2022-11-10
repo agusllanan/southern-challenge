@@ -4,7 +4,6 @@ import { FilterBox } from "@molecules/FiltersBox";
 import { SearchFiltersGroup } from "@organisms/SearchFiltersGroup";
 import { useSearchQuery } from "@hooks/useSearchQuery";
 import { showThroughData } from "@helpers/showThroughData";
-import { NoFoundText } from "@atoms/NoFoundText";
 import { useAppContext } from "@hooks/useAppContext";
 
 const Home = () => {

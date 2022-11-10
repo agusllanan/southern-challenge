@@ -2,14 +2,14 @@ import { TEXTS } from "@constants/TEXTS";
 import { useAppContext } from "@hooks/useAppContext";
 import { useSearchContext } from "@hooks/useSearchContext";
 
-export const NoFoundText = ({ title, error }) => {
+export const NoFoundDataText = ({ title, error }) => {
   const { context } = useAppContext();
-  const { dataSwitch } = useSearchContext();
+  const { searchContext } = useSearchContext();
   const { NO_FOUND_TITLE } = TEXTS;
 
   return (
     <div className={context ? "w-full" : "w-3/4"}>
-      {dataSwitch ? (
+      {searchContext.dataSwitch ? (
         <>
           <h3 className="text-white font-bold w-full mt-10 mb-4 text-5xl">
             {title || NO_FOUND_TITLE.fetched}

@@ -1,17 +1,21 @@
 import Head from "next/head";
 import { TEXTS } from "@constants/TEXTS";
-import { FilterBox } from "@molecules/FiltersBox";
 import { SearchFiltersGroup } from "@organisms/SearchFiltersGroup";
 import { useSearchQuery } from "@hooks/useSearchQuery";
-import { showThroughData } from "@helpers/showThroughData";
-import { useAppContext } from "@hooks/useAppContext";
+import { Loading } from "@atoms/Loading";
+import { PhotosGrid } from "@molecules/PhotosGrid";
+import { NoFoundDataText } from "@atoms/NoFoundDataText";
 
 const Home = () => {
   const { HOME } = TEXTS;
-  const { data, isLoading, isError } = useSearchQuery();
-  const { context } = useAppContext();
+  const { data, isLoading, isError, isFetching } = useSearchQuery();
 
-  const hasContext = context.length > 0;
+  const hasData = (data) => {
+    if (data.photos.length > 0) {
+      return <PhotosGrid photos={data.photos} />;
+    }
+    return <NoFoundDataText error={isError} />;
+  };
 
   return (
     <div className="p-0.5">
@@ -32,8 +36,11 @@ const Home = () => {
         </div>
         <SearchFiltersGroup />
         <div className="flex w-[90%] flex-col">
-          {showThroughData(data, isLoading, isError)}
-          {hasContext && <FilterBox />}
+          {isLoading || isFetching ? (
+            <Loading isFullScreen isBig />
+          ) : (
+            hasData(data)
+          )}
         </div>
       </main>
     </div>

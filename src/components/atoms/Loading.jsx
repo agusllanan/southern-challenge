@@ -1,10 +1,16 @@
-const Loading = ({ screen }) => {
+export const Loading = ({ isFullScreen, isBig }) => {
   return (
-    <div className="min-h-screen flex justify-content align-content-center">
+    <div
+      className={`${
+        isFullScreen ? "min-h-screen" : "h-auto"
+      } flex justify-center items-center w-full`}
+    >
       <div role="status">
         <svg
           aria-hidden="true"
-          class="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          className={`mr-2 ${
+            isBig ? "w-24 h-24" : "w-8 h-8"
+          } text-gray-400 bg-opacity-40 animate-spin fill-purple-600`}
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -18,10 +24,8 @@ const Loading = ({ screen }) => {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     </div>
   );
 };
-
-export default Loading;

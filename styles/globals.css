@@ -4,9 +4,18 @@
 
 @layer base {
   * {
-    @apply p-0 m-0 box-border;
+    @apply p-0 m-0 box-border scroll-smooth;
   }
   body {
-    @apply text-white bg-slate-700;
+    @apply text-white bg-black;
+  }
+}
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield !important;
   }
 }

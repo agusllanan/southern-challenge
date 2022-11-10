@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@constants/*": ["src/constants/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@helpers/*": ["src/services/helpers/*"],
+      "@context/*": ["src/services/context/*"],
+      "@services/*": ["src/services/*"],
+      "@styles/*": ["styles/*"]
+    }
+  }
+}

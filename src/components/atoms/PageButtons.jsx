@@ -4,14 +4,15 @@ import { useSearchQuery } from "@hooks/useSearchQuery";
 export const PageButtons = () => {
   const { setSearchContext, searchContext } = useSearchContext();
   const { refetch, isRefetching } = useSearchQuery();
+  const { page } = searchContext;
 
   const onClickNext = () => {
-    setSearchContext({ ...searchContext, page: searchContext.page + 1 });
+    setSearchContext({ ...searchContext, page: page + 1 });
     refetch();
   };
 
   const onClickPrev = () => {
-    setSearchContext({ ...searchContext, page: searchContext.page - 1 });
+    setSearchContext({ ...searchContext, page: page - 1 });
     refetch();
   };
 
@@ -20,12 +21,12 @@ export const PageButtons = () => {
       <div className="p-3 space-x-10 justify-around items-center flex flex-row w-full">
         <button
           className="bg-purple-600 p-2 rounded-lg"
-          disabled={searchContext.page === 1 || isRefetching}
+          disabled={page === 1 || isRefetching}
           onClick={onClickPrev}
         >
           Prev page
         </button>
-        <p className="mx-10">{searchContext.page}</p>
+        <p className="mx-10">{page}</p>
         <button
           onClick={onClickNext}
           disabled={isRefetching}

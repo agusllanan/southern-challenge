@@ -10,7 +10,7 @@ const Home = () => {
   const { HOME } = TEXTS;
   const { data, isLoading, isError, isFetching } = useSearchQuery();
 
-  const hasData = (data) => {
+  const hasData = () => {
     if (data.photos.length > 0) {
       return <PhotosGrid photos={data.photos} />;
     }
@@ -36,11 +36,7 @@ const Home = () => {
         </div>
         <SearchFiltersGroup />
         <div className="flex w-[90%] flex-col">
-          {isLoading || isFetching ? (
-            <Loading isFullScreen isBig />
-          ) : (
-            hasData(data)
-          )}
+          {isLoading || isFetching ? <Loading isFullScreen isBig /> : hasData()}
         </div>
       </main>
     </div>
